@@ -19,7 +19,7 @@
         
         $dozvola = $_SESSION["dozvola"];
         if($dozvola == 'pretplatnik'){
-            header("Location: ../administracija-zaposlenika");
+            header("Location: ../NTPWS-projekt");
             exit;
         }
 
@@ -76,7 +76,7 @@
                     <input class="btn btn-primary" name="submit" id="submit" type="submit" value="Unesi">
                 </div>
                 <div class="col-4" style="text-align:right;">
-                    <a class="btn btn-outline-secondary" href="../administracija-zaposlenika">Povratak na početnu</a>
+                    <a class="btn btn-outline-secondary" href="../NTPWS-projekt">Povratak na početnu</a>
                 </div>
             </div>
         </form>

@@ -18,7 +18,7 @@
 		<?php
 			if(isset($_SESSION["loggedIn"])){
 				if($_SESSION["loggedIn"] == true){
-					header("Location: ../administracija-zaposlenika");
+					header("Location: ../NTPWS-projekt");
 					exit;
 				}
 			}
@@ -54,7 +54,7 @@
 						$_SESSION["dozvola"] = $dozvola;
 						
 						mysqli_close($conn);
-						header("Location: ../administracija-zaposlenika");
+						header("Location: ../NTPWS-projekt");
 						exit;
 					} 
 
@@ -63,7 +63,7 @@
 			}
 		?>
 		<div style="font-family: Trebuchet MS, Arial, Helvetica, sans-serif; text-align:center; margin-top:20vh;">
-			<h2><a style="text-decoration:none;" href="/administracija-zaposlenika">Administracija zaposlenika</a></h2>
+			<h2><a style="text-decoration:none;" href="/NTPWS-projekt">Administracija zaposlenika</a></h2>
 			<form method="POST" style="margin-top:30px;">
 				<label>Korisničko ime:
 					<input class="form-control" name="username" type="text" required>

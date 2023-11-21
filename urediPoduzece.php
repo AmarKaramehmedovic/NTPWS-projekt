@@ -20,7 +20,7 @@
         
         $dozvola = $_SESSION["dozvola"];
         if($dozvola == 'pretplatnik'){
-            header("Location: ../administracija-zaposlenika");
+            header("Location: ../NTPWS-projekt");
             exit;
         }
 
@@ -81,7 +81,7 @@
             $sql2 = "DELETE FROM poduzeca WHERE id = '$id'";
 
             if (mysqli_query($conn, $sql1) && mysqli_query($conn, $sql2)) {
-                header("refresh:1; url='../administracija-zaposlenika'");
+                header("refresh:1; url='../NTPWS-projekt'");
             }else {
                 echo "Greška u brisanju: " . mysqli_error($conn);
             }
@@ -136,7 +136,7 @@
                     onclick="return confirm('Jeste li sigurni da želite izbrisati ovo poduzeće?\nOva radnja će izbrisati i sve zaposlenike ovog poduzeća')">
                 </div>
                 <div class="col-4" style="text-align:right;">
-                    <a class="btn btn-outline-secondary" href="../administracija-zaposlenika">Povratak na početnu</a>
+                    <a class="btn btn-outline-secondary" href="../NTPWS-projekt">Povratak na početnu</a>
                 </div>
             </div>
 

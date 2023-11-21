@@ -1,4 +1,4 @@
-# administracija-zaposlenika
+# NTPWS-projekt
 Web aplikacija iz baze podataka, po pretraženom nazivu poduzeća, ispisuje kontakt podatke poduzeća te kontakt podatke svakog zaposlenika.
 Kroz aplikaciju, osim pretrage je moguća i administracija, dodavanje poduzeća, zaposlenika te korisnika aplikacije (administratora/urednika) za administraciju aplikacije.
 

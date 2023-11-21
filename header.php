@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-            <h3 style="margin-top:20px; text-align:center;"><a style="text-decoration:none;" href="/administracija-zaposlenika">Administracija zaposlenika</a></h3>
+            <h3 style="margin-top:20px; text-align:center;"><a style="text-decoration:none;" href="/NTPWS-projekt">Administracija zaposlenika</a></h3>
         </div>
         <div class="col-4">
             <?php
