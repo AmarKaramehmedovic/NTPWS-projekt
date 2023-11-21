@@ -83,7 +83,7 @@
 		</div>
 		<div class="footer" style="margin-top:45vh;">
 			<hr></hr>
-			<p>Web aplikacija za administraciju podataka zaposlenika poduzeća - Završni rad - Amar Karamehmedović</p>
+			<p>Napredne tehnike programiranja web servisa (.open-source) - Projekt - Amar Karamehmedović</p>
 		</div>
 	</div>
 
