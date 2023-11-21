@@ -1,0 +1,112 @@
+html,
+body {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	background-color: white;
+}
+
+.header {
+	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+	margin-top: 5px;
+	margin-bottom: -5px;
+	padding-top: 10px;
+	text-align: center;
+	font-size: 40px;
+}
+
+.action-menu {
+	font-size: 15px !important;
+	text-align: right !important;
+	list-style-type: none;
+}
+
+.action-menu li {
+	display: inline;
+}
+
+.form-spacing {
+	margin-top: 7px;
+}
+
+.error {
+	color: red;
+}
+
+#table1 {
+	font-family: Trebuchet MS, Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 1000px;
+	border: 1;
+}
+
+#table1 td,
+#table1 th {
+	border: 1px solid #ddd;
+	padding: 4px;
+}
+
+#table1 tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+#table1 tr:hover {
+	background-color: #ddd;
+}
+
+#table1 th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: center;
+	background-color: #337DFF;
+	color: white;
+}
+
+#table1 td {
+	text-align: center;
+}
+
+.main-login {
+	height: 60%;
+	width: 100%;
+	display: table;
+}
+
+.wrapper-login {
+	display: table-cell;
+	height: 100%;
+	vertical-align: middle;
+	min-height: 70%;
+}
+
+.wrapper {
+	width: 1000px;
+	min-height: 70%;
+	margin-top: -15px;
+	padding-right: 125px;
+}
+
+.wrapper-pocetna {
+	width: 1000px;
+	min-height: 70%;
+}
+
+.wrapper-izbornik {
+	width: 1000px;
+	margin: 0 auto;
+	padding-bottom: 20px;
+}
+
+.footer {
+	height: 60px !important;
+	text-align: center;
+	width: 100%;
+	font-size: 15px;
+}
+
+.footer,
+.push {
+	height: 60px;
+}
