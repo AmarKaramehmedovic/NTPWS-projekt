@@ -1,8 +1,8 @@
 # NTPWS-projekt
 Web aplikacija iz baze podataka, po pretraženom nazivu poduzeća, ispisuje kontakt podatke poduzeća te kontakt podatke svakog zaposlenika.
-Kroz aplikaciju, osim pretrage je moguća i administracija, dodavanje poduzeća, zaposlenika te korisnika aplikacije (administratora/urednika) za administraciju aplikacije.
+Kroz aplikaciju, osim pretrage je moguća i administracija, dodavanje poduzeća (dohvaćanje podataka putem API-ja iz sudskog registra), zaposlenika te korisnika aplikacije (administratora/urednika) za administraciju aplikacije.
 
-VIDEO PREZENTACIJA: https://youtu.be/anxvOxfTHGQ
+VIDEO PREZENTACIJA: https://youtu.be/
 
 UPUTE:
 Da bi aplikacija ispravno radila, mySQL bazu (koja se nalazi u repozitoriju), potrebno je importati kroz phpmyadmin (prilikom importa obavezno isključiti foreign key checks).
