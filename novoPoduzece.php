@@ -9,6 +9,19 @@
     <link rel="shortcut icon" href="slike/favicon.ico" />
 </head>
 
+<style>
+    #text-container {
+    position: relative;
+    padding-bottom: 2px;
+}
+
+#text-success, #text-fail {
+    position: absolute;
+    left: 5;
+    top: 0;
+}
+</style>
+
 <body>
     <?php
         session_start();
@@ -43,7 +56,6 @@
             $jsonResponse = curl_exec($curl);
 
             if($jsonResponse == 'null'){
-                // echo "Prazan response, provjerite upisani OIB!";
                 $apiFail = true;
             } else {
                 $curl_errno = curl_errno($curl);
@@ -76,35 +88,39 @@
                 <div class="col-2">
                     <input class="btn btn-outline-primary" name="dohvatiPodatke" id="dohvatiPodatke" type="submit" value="Dohvati podatke">
                 </div>
-                <span class='text-success form-spacing' style="visibility:
-                    <?php 
-                        if(isset($apiSuccess)) {
-                            if($jsonResponse != 'null'){
-                                    echo 'visible';
-                                } else {
-                                    echo 'hidden';
-                                }
-                        } else {
-                            echo 'hidden';
-                        } ?>">
-                    Uspješno dohvaćeni podaci sa sudskog registra!
-                </span>
-                <span class='text-danger form-spacing' style="visibility:
-                    <?php 
-                        if(isset($apiFail)) {
-                            if($jsonResponse == 'null'){
-                                    echo 'visible';
-                                } else {
-                                    echo 'hidden';
-                                }
-                        } else {
-                            echo 'hidden';
-                        } ?>">
-                    Prazan response, provjerite upisani OIB!
-                </span>
+            </div>
+            <div class="row">
+                <div id="text-container" class="col-6">
+                    <span id="text-success" class='text-success form-spacing' style="visibility:
+                        <?php 
+                            if(isset($apiSuccess)) {
+                                if($jsonResponse != 'null'){
+                                        echo 'visible';
+                                    } else {
+                                        echo 'hidden';
+                                    }
+                            } else {
+                                echo 'hidden';
+                            } ?>">
+                        Uspješno dohvaćeni podaci iz sudskog registra!
+                    </span>
+                    <span id="text-fail" class='text-danger form-spacing' style="visibility:
+                        <?php 
+                            if(isset($apiFail)) {
+                                if($jsonResponse == 'null'){
+                                        echo 'visible';
+                                    } else {
+                                        echo 'hidden';
+                                    }
+                            } else {
+                                echo 'hidden';
+                            } ?>">
+                        Unijeli ste neispravan OIB!
+                    </span>
+                </div>
             </div>
         </form>
-
+        <br />
         <form method="POST">
             <div class="row form-spacing">
                 <label class="col-8">Naziv poduzeća:
