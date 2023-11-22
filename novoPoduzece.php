@@ -27,21 +27,94 @@
             
         include "header.php";
         require_once "connection.php";
+
+        if (isset($_POST["dohvatiPodatke"])) {
+
+            $oib = $_POST["oibPoduzeca"];
+            $url = "https://sudreg-api.pravosudje.hr/javni/subjekt_detalji?tipIdentifikatora=oib&identifikator=" . $oib;
+
+            $curl = curl_init();   
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true); 
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                'Ocp-Apim-Subscription-Key: 421e8e8c0a1c49bea7303d991df14e5a'
+             ));
+            curl_setopt($curl, CURLOPT_URL, $url); 
+
+            $jsonResponse = curl_exec($curl);
+
+            if($jsonResponse == 'null'){
+                // echo "Prazan response, provjerite upisani OIB!";
+                $apiFail = true;
+            } else {
+                $curl_errno = curl_errno($curl);
+                $curl_error = curl_error($curl);
+                curl_close($curl);
+
+                if ($curl_errno > 0) {
+                    echo "Greška u pozivanju API-ja. Više detalja: ($curl_errno): $curl_error\n";
+                } else {
+                    $apiSuccess = true;
+
+                    $parsedJson = json_decode($jsonResponse);
+                    $apiNaziv = $parsedJson -> {'skracene_tvrtke'}[0] -> {'ime'};
+                    $apiAdresa = $parsedJson -> {'sjedista'}[0] -> {'ulica'} . " " . $parsedJson -> {'sjedista'}[0] -> {'kucni_broj'};
+                    $apiMjesto = $parsedJson -> {'sjedista'}[0] -> {'naziv_naselja'};
+                }
+            }
+
+        }
     ?>
-    
+
     <div class="container-fluid wrapper">
     <h4 style="font-size: 1.6rem;">Unos poduzeća</h4>
     <br />
         <form method="POST">
             <div class="row">
+                <div class="col-4">
+                    <input class="form-control" name="oibPoduzeca" type="number" placeholder="Unesite OIB" required <?php if(!isset($apiSuccess)) {echo 'autofocus';} ?>>
+                </div>
+                <div class="col-2">
+                    <input class="btn btn-outline-primary" name="dohvatiPodatke" id="dohvatiPodatke" type="submit" value="Dohvati podatke">
+                </div>
+                <span class='text-success form-spacing' style="visibility:
+                    <?php 
+                        if(isset($apiSuccess)) {
+                            if($jsonResponse != 'null'){
+                                    echo 'visible';
+                                } else {
+                                    echo 'hidden';
+                                }
+                        } else {
+                            echo 'hidden';
+                        } ?>">
+                    Uspješno dohvaćeni podaci sa sudskog registra!
+                </span>
+                <span class='text-danger form-spacing' style="visibility:
+                    <?php 
+                        if(isset($apiFail)) {
+                            if($jsonResponse == 'null'){
+                                    echo 'visible';
+                                } else {
+                                    echo 'hidden';
+                                }
+                        } else {
+                            echo 'hidden';
+                        } ?>">
+                    Prazan response, provjerite upisani OIB!
+                </span>
+            </div>
+        </form>
+
+        <form method="POST">
+            <div class="row form-spacing">
                 <label class="col-8">Naziv poduzeća:
-                    <input class="form-control" name="nazivPoduzeca" type="text" placeholder="Unesite naziv" required>
+                    <input class="form-control" value="<?php if(isset($apiNaziv)) echo $apiNaziv; ?>" name="nazivPoduzeca" type="text" placeholder="Unesite naziv" required>
                 </label>
             </div>
 
             <div class="row form-spacing">
                 <label class="col-4">Adresa:
-                    <input class="form-control" name="adresaPoduzeca" type="text" placeholder="Unesite adresu">
+                    <input class="form-control" value="<?php if(isset($apiAdresa)) echo $apiAdresa; ?>" name="adresaPoduzeca" type="text" placeholder="Unesite adresu">
                 </label>
                 <label class="col-4">Poštanski broj:
                     <input class="form-control" name="postBr" type="number" placeholder="Unesite poštanski broj">
@@ -50,7 +123,7 @@
 
             <div class="row form-spacing">
                 <label class="col-4">Mjesto:
-                    <input class="form-control" name="mjesto" type="text" placeholder="Unesite mjesto">
+                    <input class="form-control" value="<?php if(isset($apiMjesto)) echo $apiMjesto; ?>" name="mjesto" type="text" placeholder="Unesite mjesto">
                 </label>
                 <label class="col-4">Kontakt broj:
                     <input class="form-control" type="tel" name="kontaktBr" pattern="[0-9\s\/\-\+]*" placeholder="Unesite broj telefona">
@@ -73,7 +146,7 @@
             </div>
         </form>
 
-        <?php
+        <?php 
             if (isset($_POST["submit"])) {
 
                 $naziv = $_POST["nazivPoduzeca"];
